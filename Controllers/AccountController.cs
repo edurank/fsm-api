@@ -10,7 +10,7 @@ namespace fsmAPI.Controllers
 {
 
     [ApiController]
-    [Route("")]
+    [Route("login")]
     public class AccountController : ControllerBase
     {
         private IAccountRepository accountRepository = null;
