@@ -1,19 +1,17 @@
-using UserAPI.Services.Interfaces;
-using UserAPI.Services.Repositories;
+using fsmAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using UserAPI.Services.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW4iLCJuYmYiOjE2OTY1NTIyMzAsImV4cCI6MTY5NjU1MjgzMCwiaWF0IjoxNjk2NTUyMjMwLCJpc3MiOiJJc3N1ZXIiLCJhdWQiOiJBdWRpZW5jZSJ9.vXZxutIjwvvOEBIoSsput5sA8GAcNOqOI-Suv02o82y9qHLe6YjUR3VgPM1Q4pmrAaQkTFubeNLyx_9Zzr1gjg
 
 // Add services to the container.// Add services to the container.
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IAccountRepository, AccountRepository>();
 
 builder.Services.AddControllers();
 

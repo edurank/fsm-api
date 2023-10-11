@@ -1,4 +1,4 @@
-﻿namespace UserAPI.Models
+﻿namespace fsmAPI.Models
 {
     public class User
     {
