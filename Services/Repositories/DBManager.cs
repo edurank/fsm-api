@@ -14,7 +14,7 @@ namespace UserAPI.Services.Repositories
         public DBManager(string _ENVIRONMENT = null)
         {
             ENVIRONMENT = _ENVIRONMENT;
-            connectionURL = "Data Source=localhost;Initial Catalog=fsm;User ID =sa;Password=@SShole666;TrustServerCertificate=True";
+            connectionURL = "Data Source=localhost;Initial Catalog=fsm;User ID =sa;Password=TrustServerCertificate=True";
         }
 
         public async Task<IEnumerable<T>> ExecuteSPAsync<T>(string query, object? queryParams = null)
