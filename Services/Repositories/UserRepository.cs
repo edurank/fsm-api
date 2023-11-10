@@ -61,5 +61,23 @@ namespace UserAPI.Services.Repositories
             }));
             return true;
         }
+
+        public async Task<bool> UpdateUser(int userId)
+        {
+            var result = (await new DBManager("DEV").ExecuteSPAsync<bool>("dbo.spUpdateUser", new
+            {
+                UserId = userId
+            }));
+            return true;
+        }
+        
+        public async Task<bool> GetUserData(int userId)
+        {
+            var result = (await new DBManager("DEV").ExecuteSPAsync<bool>("dbo.spGetUserData", new
+            {
+                UserId = userId
+            }));
+            return true;
+        }
     }
 }

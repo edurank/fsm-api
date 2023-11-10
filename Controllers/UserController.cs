@@ -39,7 +39,7 @@ namespace UserAPI.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> User([FromBody] JwtUser request) {
             // Get logged in user.
             var result = await userRepository.GetUser(request);
@@ -53,7 +53,14 @@ namespace UserAPI.Controllers
             return Ok(isDeleted);
         }
 
+        [HttpPatch]
+        public async Task<IActionResult> Update([FromBody] User user)
+        {
+            bool isUpdated = await userRepository.UpdateUser(user.Id);
+            return Ok(isUpdated);
+        }
         
+        // PRIVATE METHODS
         private int getUserId()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;

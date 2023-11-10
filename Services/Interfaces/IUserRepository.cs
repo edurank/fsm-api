@@ -8,5 +8,6 @@ namespace fsmAPI.Services.Interfaces
         public Task<User?> GetUser(JwtUser requestJwt);
         public Task<bool> NewUser(User user);
         public Task<bool> DeleteUser(int userId);
+        public Task<bool> UpdateUser(int userId);
     }
 }
