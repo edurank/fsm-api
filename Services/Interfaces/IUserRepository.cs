@@ -9,5 +9,6 @@ namespace fsmAPI.Services.Interfaces
         public Task<bool> NewUser(User user);
         public Task<bool> DeleteUser(int userId);
         public Task<bool> UpdateUser(int userId);
+        public Task<User?> GetUserById(int userId);
     }
 }

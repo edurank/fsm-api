@@ -40,10 +40,19 @@ namespace UserAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> User([FromBody] JwtUser request) {
+        public async Task<IActionResult> GetUser([FromBody] JwtUser request) {
             // Get logged in user.
             var result = await userRepository.GetUser(request);
             return Ok(result);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("profile")]
+        public async Task<IActionResult> GetProfile()
+        {
+            User profile = await userRepository.GetUserById(3);
+            return Ok(profile);
         }
 
         [HttpDelete]

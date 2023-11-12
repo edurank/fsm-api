@@ -46,7 +46,7 @@ namespace UserAPI.Services.Repositories
         {
             var result = (await new DBManager("DEV").ExecuteSPAsync<bool>("dbo.spNewUser", new
             {
-                name = user.Name,
+                firstName = user.FirstName,
                 email = user.Email,
                 password = user.Password
             }));
@@ -78,6 +78,18 @@ namespace UserAPI.Services.Repositories
                 UserId = userId
             }));
             return true;
+        }
+
+        public async Task<User?> GetUserById(int userId)
+        {
+            User result = new User();
+            
+            result = (await new DBManager("DEV").ExecuteSPAsync<User>("dbo.spGetUserById", new
+            {
+                Id = userId
+            })).FirstOrDefault();
+            
+            return result;
         }
     }
 }
