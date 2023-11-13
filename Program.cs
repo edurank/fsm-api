@@ -1,8 +1,8 @@
 using fsmAPI.Services.Interfaces;
+using fsmAPI.Services.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using UserAPI.Services.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,7 @@ string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IAccountRepository, AccountRepository>();
+builder.Services.AddTransient<IPostRepository, PostRepository>();
 
 builder.Services.AddControllers();
 

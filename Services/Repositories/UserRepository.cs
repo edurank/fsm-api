@@ -1,7 +1,7 @@
 ﻿using fsmAPI.Models;
 using fsmAPI.Services.Interfaces;
 
-namespace UserAPI.Services.Repositories
+namespace fsmAPI.Services.Repositories
 {
     public class UserRepository : IUserRepository
     {

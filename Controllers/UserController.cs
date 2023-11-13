@@ -25,7 +25,7 @@ namespace UserAPI.Controllers
         {
             User requestUser = new User()
             {
-            Id = getUserId()
+                Id = getUserId()
             };
           
             List<User> users = await userRepository.GetUsers(requestUser);
@@ -51,7 +51,7 @@ namespace UserAPI.Controllers
         [Route("profile")]
         public async Task<IActionResult> GetProfile()
         {
-            User profile = await userRepository.GetUserById(3);
+            User profile = await userRepository.GetUserById(4);
             return Ok(profile);
         }
 
@@ -73,10 +73,11 @@ namespace UserAPI.Controllers
         private int getUserId()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
+            int claim = -1;
+                
+            claim = int.Parse(identity.Claims.ToList()[0].Value);
 
-            string subClaim = identity?.FindFirst("sub").Value;
-
-            return int.Parse(subClaim);
+            return claim; 
         }
     }
 }

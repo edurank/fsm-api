@@ -25,7 +25,7 @@ namespace fsmAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] JwtUser jwtUser)
         {
-            User registeredUser = null;
+            UserLogin registeredUser = null;
 
             registeredUser = await accountRepository.Login(jwtUser);
 
@@ -36,7 +36,7 @@ namespace fsmAPI.Controllers
             return Ok(generateToken(registeredUser));
         }
 
-        private string generateToken(User user)
+        private string generateToken(UserLogin user)
         {
             var issuer = configuration["Jwt:Issuer"];
             var audience = configuration["Jwt:Audience"];

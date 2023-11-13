@@ -4,6 +4,6 @@ namespace fsmAPI.Services.Interfaces
 {
     public interface IAccountRepository
     {
-        public Task<User> Login(JwtUser jwtUser);
+        public Task<UserLogin> Login(JwtUser jwtUser);
     }
 }

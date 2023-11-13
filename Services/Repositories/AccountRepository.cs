@@ -1,7 +1,7 @@
 ﻿using fsmAPI.Services.Interfaces;
 using fsmAPI.Models;
 
-namespace UserAPI.Services.Repositories
+namespace fsmAPI.Services.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
@@ -11,10 +11,10 @@ namespace UserAPI.Services.Repositories
         }
 
         // Public Methods
-        public async Task<User> Login(JwtUser user)
+        public async Task<UserLogin> Login(JwtUser user)
         {
-          List<User> userResponse = null;
-          userResponse = (await new DBManager("DEV").ExecuteSPAsync<User>("dbo.spGetUser", new {
+          List<UserLogin> userResponse = null;
+          userResponse = (await new DBManager("DEV").ExecuteSPAsync<UserLogin>("dbo.spGetUserLogin", new {
                 email = user.Email,
                 password = user.Password
                 })).ToList();
