@@ -6,5 +6,6 @@ namespace fsmAPI.Services.Interfaces
     {
         public Task<bool> CreatePost();
         public Task<List<Post>> GetPostsByAuthor(int authorId);
+        public Task<bool> NewPost(NewPost newPost);
     }
 }

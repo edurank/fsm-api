@@ -35,6 +35,18 @@ namespace fsmAPI.Controllers
             return Ok(posts);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> NewPost([FromBody] NewPost request)
+        {
+            int userId = getUserId();
+            if (userId == -1) return Unauthorized();
+
+            request.AuthorId = userId;
+            
+            bool success = await postRepository.NewPost(request);
+            return Ok(success);
+        }
+
         // PRIVATE METHODS
         private int getUserId()
         {

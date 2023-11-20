@@ -19,4 +19,10 @@ namespace fsmAPI.Models
         public string ExternalUrl { get; set; }
         public string Location { get; set; }
     }
+
+    public class NewPost
+    {   
+        public int AuthorId { get; set; }
+        public string Content { get; set; }
+    }
 }

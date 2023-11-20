@@ -19,12 +19,26 @@ namespace fsmAPI.Services.Repositories
         {
             List<Post> post_list = new List<Post>();
 
-            post_list = (await new DBManager("DEV").ExecuteSPAsync<Post>("dbo.spGetPostsByUserId", new
+            post_list = (await new DBManager("DEV").ExecuteQueryAsync<Post>("dbo.spGetPostsByUserId", new
             {
                 id = authorId
             })).ToList();
 
             return post_list;
+        }
+
+        public async Task<bool> NewPost(NewPost newPost)
+        {
+            bool success = false;
+            
+            
+            success = await new DBManager("DEV").ExecuteScalarAsync<bool>("dbo.spInsertPost", new
+            {
+                authorId = newPost.AuthorId,
+                content = newPost.Content
+            });
+            
+            return success;
         }
     }
 }
