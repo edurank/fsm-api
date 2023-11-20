@@ -14,7 +14,7 @@ namespace fsmAPI.Services.Repositories
         public async Task<UserLogin> Login(JwtUser user)
         {
           List<UserLogin> userResponse = null;
-          userResponse = (await new DBManager("DEV").ExecuteSPAsync<UserLogin>("dbo.spGetUserLogin", new {
+          userResponse = (await new DBManager("DEV").ExecuteQueryAsync<UserLogin>("dbo.spGetUserLogin", new {
                 email = user.Email,
                 password = user.Password
                 })).ToList();
