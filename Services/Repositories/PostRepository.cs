@@ -15,13 +15,13 @@ namespace fsmAPI.Services.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<List<Post>> GetPostsByAuthor(int authorId)
+        public async Task<List<Post>> GetPostsByAuthor(User user)
         {
             List<Post> post_list = new List<Post>();
 
             post_list = (await new DBManager("DEV").ExecuteQueryAsync<Post>("dbo.spGetPostsByUserId", new
             {
-                id = authorId
+                id = user.Id
             })).ToList();
 
             return post_list;

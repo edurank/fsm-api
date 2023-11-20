@@ -18,9 +18,9 @@ namespace fsmAPI.Controllers
             this.postRepository = _postRepository;
             this.configuration = _configuration;    
         }
-
-        [HttpGet("all")]
-        public async Task<IActionResult> GetPosts()
+        
+        [HttpGet("")]
+        public async Task<IActionResult> GetPostsByUser()
         {
             int userId = getUserId();
             if (userId == -1) return Unauthorized();
@@ -31,8 +31,26 @@ namespace fsmAPI.Controllers
             };
           
             
-            List<Post> posts = await postRepository.GetPostsByAuthor(4);
+            List<Post> posts = await postRepository.GetPostsByAuthor(requestUser);
             return Ok(posts);
+        }
+        
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPosts()
+        {
+
+            throw new NotImplementedException();
+            /*int userId = getUserId();
+            if (userId == -1) return Unauthorized();
+
+            User requestUser = new User()
+            {
+                Id = getUserId()
+            };
+
+
+            List<Post> posts = await postRepository.GetAllPosts();
+            return Ok(posts);*/
         }
 
         [HttpPost]
