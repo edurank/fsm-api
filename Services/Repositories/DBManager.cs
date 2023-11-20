@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace UserAPI.Services.Repositories
+namespace fsmAPI.Services.Repositories
 {
     public class DBManager
     {
@@ -14,10 +14,10 @@ namespace UserAPI.Services.Repositories
         public DBManager(string _ENVIRONMENT = null)
         {
             ENVIRONMENT = _ENVIRONMENT;
-            connectionURL = "Data Source=localhost;Initial Catalog=fsm;User ID =sa;Password=TrustServerCertificate=True";
+            connectionURL = "Data Source=localhost;Initial Catalog=fsm;User ID =sa;Password=;TrustServerCertificate=True";
         }
 
-        public async Task<IEnumerable<T>> ExecuteSPAsync<T>(string query, object? queryParams = null)
+        public async Task<IEnumerable<T>> ExecuteQueryAsync<T>(string query, object? queryParams = null)
         {
             using (IDbConnection conn = new SqlConnection(connectionURL))
             {
