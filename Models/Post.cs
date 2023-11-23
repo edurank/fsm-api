@@ -25,5 +25,6 @@ namespace fsmAPI.Models
         public int AuthorId { get; set; }
         public string Content { get; set; }
         public string Image { get; set; }
+        public List<IFormFile> Files { get; set; }
     }
 }
